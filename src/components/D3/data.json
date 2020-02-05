@@ -1,0 +1,5 @@
+[
+  { "platform": "Adroid", "percentage": 40.11 },
+  { "platform": "Windows", "percentage": 36.69 },
+  { "platform": "iOS", "percentage": 13.06 }
+]
