@@ -3,32 +3,32 @@ import * as d3 from "d3";
 const forceBubbles = () => {
 
     // set the dimensions and margins of the graph
-    var width = 450
-    var height = 450
+    let width = 450
+    let height = 450
 
     // append the svg object to the body of the page
-    var svg = d3.select("#wine")
+    let svg = d3.select("#wine")
         .append("svg")
         .attr("width", 450)
         .attr("height", 450)
 
     // create dummy data -> just one element per circle
-    var data = [{ "name": "A", "group": 1 }, { "name": "B", "group": 1 }, { "name": "C", "group": 1 }, { "name": "D", "group": 1 }, { "name": "E", "group": 1 }, { "name": "F", "group": 1 },
+    let data = [{ "name": "A", "group": 1 }, { "name": "B", "group": 1 }, { "name": "C", "group": 1 }, { "name": "D", "group": 1 }, { "name": "E", "group": 1 }, { "name": "F", "group": 1 },
     { "name": "G", "group": 2 }, { "name": "H", "group": 2 }, { "name": "I", "group": 2 }, { "name": "J", "group": 2 }, { "name": "K", "group": 2 }, { "name": "L", "group": 2 },
     { "name": "M", "group": 3 }, { "name": "N", "group": 3 }, { "name": "O", "group": 3 }]
 
     // A scale that gives a X target position for each group
-    var x = d3.scaleOrdinal()
+    let x = d3.scaleOrdinal()
         .domain([1, 2, 3])
         .range([50, 200, 340])
 
     // A color scale
-    var color = d3.scaleOrdinal()
+    let color = d3.scaleOrdinal()
         .domain([1, 2, 3])
         .range(["#F8766D", "#00BA38", "#619CFF"])
 
     // Initialize the circle: all located at the center of the svg area
-    var node = svg.append("g")
+    let node = svg.append("g")
         .selectAll("circle")
         .data(data)
         .enter()
@@ -46,7 +46,7 @@ const forceBubbles = () => {
             .on("end", dragended));
 
     // Features of the forces applied to the nodes:
-    var simulation = d3.forceSimulation()
+    let simulation = d3.forceSimulation()
         .force("x", d3.forceX().strength(0.5).x(function (d) { return x(d.group) }))
         .force("y", d3.forceY().strength(0.1).y(height / 2))
         .force("center", d3.forceCenter().x(width / 2).y(height / 2)) // Attraction to the center of the svg area

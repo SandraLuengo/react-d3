@@ -1,12 +1,12 @@
 import * as d3 from 'd3';
 
 const barAnimation = (dataset) => {
-    var margin = { top: 30, right: 30, bottom: 70, left: 60 },
+    let margin = { top: 30, right: 30, bottom: 70, left: 60 },
         width = 460 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
-    var svg = d3.select("#wine")
+    let svg = d3.select("#wine")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -14,7 +14,7 @@ const barAnimation = (dataset) => {
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-    var x = d3.scaleBand()
+    let x = d3.scaleBand()
         .range([0, width])
         .domain(dataset.children.map(d => d.Name))
         .padding(0.2);
@@ -25,7 +25,7 @@ const barAnimation = (dataset) => {
         .attr("transform", "translate(-10,0)rotate(-45)")
         .style("text-anchor", "end");
 
-    var y = d3.scaleLinear()
+    let y = d3.scaleLinear()
         .domain([0, d3.max(dataset.children, d => +d.Count)])
         .range([height, 0]);
     svg.append("g")
